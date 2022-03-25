@@ -15,13 +15,14 @@ class PokemonInfoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Table(
       border: TableBorder.all(color: Colors.black),
-      columnWidths: const {0: FixedColumnWidth(100), 1: FixedColumnWidth(100)},
+      columnWidths: const {0: FixedColumnWidth(60), 1: FixedColumnWidth(100)},
       children: [
         TableRow(children: [
-          const TableCell(
-            child: Padding(
-              padding: EdgeInsets.all(4),
-              child: Text('Name'),
+          TableCell(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(4),
+              child: const Text('Name'),
             ),
           ),
           TableCell(
@@ -32,10 +33,11 @@ class PokemonInfoView extends StatelessWidget {
           )
         ]),
         TableRow(children: [
-          const TableCell(
-            child: Padding(
-              padding: EdgeInsets.all(4),
-              child: Text('Type1'),
+          TableCell(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(4),
+              child: const Text('Type1'),
             ),
           ),
           TableCell(
@@ -46,10 +48,11 @@ class PokemonInfoView extends StatelessWidget {
           )
         ]),
         TableRow(children: [
-          const TableCell(
-            child: Padding(
-              padding: EdgeInsets.all(4),
-              child: Text('Type2'),
+          TableCell(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(4),
+              child: const Text('Type2'),
             ),
           ),
           TableCell(
