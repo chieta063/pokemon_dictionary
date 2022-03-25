@@ -1,8 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokemon_dictionary/viewmodel/pokemon_viewmodel.dart';
-import 'package:pokemon_dictionary/widgets/pokemon_info_view.dart';
+import 'package:pokemon_dictionary/widgets/search_result_view.dart';
 import 'package:pokemon_dictionary/widgets/search_view.dart';
 
 class Home extends HookConsumerWidget {
@@ -19,23 +18,16 @@ class Home extends HookConsumerWidget {
       body: Column(
         children: [
           SearchView(
-            onTapSearchButton: (text) => viewModel.searchPokemon(),
+            onTapSearchButton: (text) => viewModel.searchPokemon(name: text),
           ),
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CachedNetworkImage(
-                  imageUrl:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-                ),
-                Center(
-                  child: PokemonInfoView(
-                    name: 'pikachu',
-                    types: ['electric'],
-                  ),
-                )
-              ],
+            child: state.map(
+              unInitialized: (value) => Container(),
+              loading: (value) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              data: (value) => SearchResultView(pokemon: value.data),
+              error: (value) => Center(child: Text(value.errorMessage)),
             ),
           )
         ],

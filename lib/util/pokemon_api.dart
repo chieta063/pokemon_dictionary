@@ -16,12 +16,20 @@ class PokemonApi {
   PokemonApi({required this.dio});
 
   Future<Pokemon> searchPokemonById(int id) async {
-    final result = await dio.get('https://pokeapi.co/api/v2/pokemon/$id');
-    return Pokemon.fromJson(result.data);
+    try {
+      final result = await dio.get('https://pokeapi.co/api/v2/pokemon/$id');
+      return Pokemon.fromJson(result.data);
+    } catch (e, s) {
+      throw Exception('Pokemon not found.');
+    }
   }
 
   Future<Pokemon> searchPokemonByName(String name) async {
-    final result = await dio.get('https://pokeapi.co/api/v2/pokemon/$name');
-    return Pokemon.fromJson(result.data);
+    try {
+      final result = await dio.get('https://pokeapi.co/api/v2/pokemon/$name');
+      return Pokemon.fromJson(result.data);
+    } catch (e, s) {
+      throw Exception('Pokemon not found.');
+    }
   }
 }

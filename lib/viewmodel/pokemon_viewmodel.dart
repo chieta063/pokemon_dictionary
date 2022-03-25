@@ -16,10 +16,11 @@ class PokemonViewModel extends StateNotifier<ApiResult> {
   void searchPokemon({int? id, String? name}) async {
     state = ApiResult.loading();
     try {
-      final result = await model.searchPokemon();
+      final result = await model.searchPokemon(id: id, name: name);
+      print(result);
       state = ApiResult.data(result);
-    } on Exception catch (error) {
-      state = ApiError(error);
+    } catch (error, stacktrace) {
+      state = ApiResult.error(error.toString().split(': ').last);
     }
   }
 }
