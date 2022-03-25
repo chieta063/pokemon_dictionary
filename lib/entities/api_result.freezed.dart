@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ApiResultTearOff {
   const _$ApiResultTearOff();
 
+  ApiUnInitialized<T> unInitialized<T>() {
+    return ApiUnInitialized<T>();
+  }
+
   ApiLoading<T> loading<T>() {
     return ApiLoading<T>();
   }
@@ -42,6 +46,7 @@ const $ApiResult = _$ApiResultTearOff();
 mixin _$ApiResult<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() unInitialized,
     required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function(Exception error) error,
@@ -49,6 +54,7 @@ mixin _$ApiResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -56,6 +62,7 @@ mixin _$ApiResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -64,6 +71,7 @@ mixin _$ApiResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ApiUnInitialized<T> value) unInitialized,
     required TResult Function(ApiLoading<T> value) loading,
     required TResult Function(ApiData<T> value) data,
     required TResult Function(ApiError<T> value) error,
@@ -71,6 +79,7 @@ mixin _$ApiResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -78,6 +87,7 @@ mixin _$ApiResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -100,6 +110,123 @@ class _$ApiResultCopyWithImpl<T, $Res> implements $ApiResultCopyWith<T, $Res> {
   final ApiResult<T> _value;
   // ignore: unused_field
   final $Res Function(ApiResult<T>) _then;
+}
+
+/// @nodoc
+abstract class $ApiUnInitializedCopyWith<T, $Res> {
+  factory $ApiUnInitializedCopyWith(
+          ApiUnInitialized<T> value, $Res Function(ApiUnInitialized<T>) then) =
+      _$ApiUnInitializedCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class _$ApiUnInitializedCopyWithImpl<T, $Res>
+    extends _$ApiResultCopyWithImpl<T, $Res>
+    implements $ApiUnInitializedCopyWith<T, $Res> {
+  _$ApiUnInitializedCopyWithImpl(
+      ApiUnInitialized<T> _value, $Res Function(ApiUnInitialized<T>) _then)
+      : super(_value, (v) => _then(v as ApiUnInitialized<T>));
+
+  @override
+  ApiUnInitialized<T> get _value => super._value as ApiUnInitialized<T>;
+}
+
+/// @nodoc
+
+class _$ApiUnInitialized<T> implements ApiUnInitialized<T> {
+  _$ApiUnInitialized();
+
+  @override
+  String toString() {
+    return 'ApiResult<$T>.unInitialized()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ApiUnInitialized<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unInitialized,
+    required TResult Function() loading,
+    required TResult Function(T data) data,
+    required TResult Function(Exception error) error,
+  }) {
+    return unInitialized();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unInitialized,
+    TResult Function()? loading,
+    TResult Function(T data)? data,
+    TResult Function(Exception error)? error,
+  }) {
+    return unInitialized?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unInitialized,
+    TResult Function()? loading,
+    TResult Function(T data)? data,
+    TResult Function(Exception error)? error,
+    required TResult orElse(),
+  }) {
+    if (unInitialized != null) {
+      return unInitialized();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ApiUnInitialized<T> value) unInitialized,
+    required TResult Function(ApiLoading<T> value) loading,
+    required TResult Function(ApiData<T> value) data,
+    required TResult Function(ApiError<T> value) error,
+  }) {
+    return unInitialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
+    TResult Function(ApiLoading<T> value)? loading,
+    TResult Function(ApiData<T> value)? data,
+    TResult Function(ApiError<T> value)? error,
+  }) {
+    return unInitialized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
+    TResult Function(ApiLoading<T> value)? loading,
+    TResult Function(ApiData<T> value)? data,
+    TResult Function(ApiError<T> value)? error,
+    required TResult orElse(),
+  }) {
+    if (unInitialized != null) {
+      return unInitialized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ApiUnInitialized<T> implements ApiResult<T> {
+  factory ApiUnInitialized() = _$ApiUnInitialized<T>;
 }
 
 /// @nodoc
@@ -142,6 +269,7 @@ class _$ApiLoading<T> implements ApiLoading<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() unInitialized,
     required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function(Exception error) error,
@@ -152,6 +280,7 @@ class _$ApiLoading<T> implements ApiLoading<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -162,6 +291,7 @@ class _$ApiLoading<T> implements ApiLoading<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -176,6 +306,7 @@ class _$ApiLoading<T> implements ApiLoading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ApiUnInitialized<T> value) unInitialized,
     required TResult Function(ApiLoading<T> value) loading,
     required TResult Function(ApiData<T> value) data,
     required TResult Function(ApiError<T> value) error,
@@ -186,6 +317,7 @@ class _$ApiLoading<T> implements ApiLoading<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -196,6 +328,7 @@ class _$ApiLoading<T> implements ApiLoading<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -274,6 +407,7 @@ class _$ApiData<T> implements ApiData<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() unInitialized,
     required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function(Exception error) error,
@@ -284,6 +418,7 @@ class _$ApiData<T> implements ApiData<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -294,6 +429,7 @@ class _$ApiData<T> implements ApiData<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -308,6 +444,7 @@ class _$ApiData<T> implements ApiData<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ApiUnInitialized<T> value) unInitialized,
     required TResult Function(ApiLoading<T> value) loading,
     required TResult Function(ApiData<T> value) data,
     required TResult Function(ApiError<T> value) error,
@@ -318,6 +455,7 @@ class _$ApiData<T> implements ApiData<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -328,6 +466,7 @@ class _$ApiData<T> implements ApiData<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -412,6 +551,7 @@ class _$ApiError<T> implements ApiError<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() unInitialized,
     required TResult Function() loading,
     required TResult Function(T data) data,
     required TResult Function(Exception error) error,
@@ -422,6 +562,7 @@ class _$ApiError<T> implements ApiError<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -432,6 +573,7 @@ class _$ApiError<T> implements ApiError<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unInitialized,
     TResult Function()? loading,
     TResult Function(T data)? data,
     TResult Function(Exception error)? error,
@@ -446,6 +588,7 @@ class _$ApiError<T> implements ApiError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(ApiUnInitialized<T> value) unInitialized,
     required TResult Function(ApiLoading<T> value) loading,
     required TResult Function(ApiData<T> value) data,
     required TResult Function(ApiError<T> value) error,
@@ -456,6 +599,7 @@ class _$ApiError<T> implements ApiError<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,
@@ -466,6 +610,7 @@ class _$ApiError<T> implements ApiError<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(ApiUnInitialized<T> value)? unInitialized,
     TResult Function(ApiLoading<T> value)? loading,
     TResult Function(ApiData<T> value)? data,
     TResult Function(ApiError<T> value)? error,

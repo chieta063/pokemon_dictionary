@@ -1,13 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pokemon_dictionary/viewmodel/pokemon_viewmodel.dart';
 import 'package:pokemon_dictionary/widgets/pokemon_info_view.dart';
 import 'package:pokemon_dictionary/widgets/search_view.dart';
 
-class Home extends StatelessWidget {
+class Home extends HookConsumerWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final viewModel = ref.read(pokemonViewModel.notifier);
+    final state = ref.watch(pokemonViewModel);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pokemon Dictionary'),
@@ -15,7 +19,7 @@ class Home extends StatelessWidget {
       body: Column(
         children: [
           SearchView(
-            onTapSearchButton: (text) => print(text),
+            onTapSearchButton: (text) => viewModel.searchPokemon(),
           ),
           Expanded(
             child: Column(

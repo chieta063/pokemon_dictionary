@@ -3,6 +3,14 @@ import 'package:pokemon_dictionary/entities/api_result.dart';
 import 'package:pokemon_dictionary/entities/pokemon.dart';
 import 'package:pokemon_dictionary/model/pokemon_model.dart';
 
+final pokemonViewModel =
+    StateNotifierProvider<PokemonViewModel, ApiResult<Pokemon>>(
+  (ref) => PokemonViewModel(
+    ApiResult.unInitialized(),
+    model: ref.read(model),
+  ),
+);
+
 class PokemonViewModel extends StateNotifier<ApiResult<Pokemon>> {
   PokemonModel model;
   PokemonViewModel(state, {required this.model}) : super(state);

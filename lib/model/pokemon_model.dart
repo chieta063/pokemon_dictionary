@@ -1,5 +1,10 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokemon_dictionary/entities/pokemon.dart';
 import 'package:pokemon_dictionary/util/pokemon_api.dart';
+
+final model = Provider<PokemonModel>(
+  (ref) => PokemonModel(api: ref.read(api)),
+);
 
 class PokemonModel {
   final PokemonApi api;
