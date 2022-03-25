@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
-  SearchView({Key? key, this.onTapSearchButton}) : super(key: key);
+  SearchView({
+    Key? key,
+    required this.currentSearchWord,
+    required this.hintText,
+    this.onTapSearchButton,
+  }) : super(key: key);
 
+  final String currentSearchWord;
+  final String hintText;
   final Function(String)? onTapSearchButton;
   final _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    if (currentSearchWord.isNotEmpty && _textEditingController.text.isEmpty) {
+      _textEditingController.text = currentSearchWord;
+    }
     return Row(
       children: [
         Expanded(
@@ -15,7 +25,7 @@ class SearchView extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16),
             child: TextField(
               controller: _textEditingController,
-              decoration: const InputDecoration(hintText: 'Input id or name'),
+              decoration: InputDecoration(hintText: hintText),
             ),
           ),
         ),
